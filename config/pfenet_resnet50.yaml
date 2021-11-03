@@ -4,7 +4,7 @@ MODEL:
   prior: False
 DATA:
   dataset: pascal
-  data_root: /home/kate/storage/few_shot_semantic_segmentation/data/VOC2012
+  data_root: ./data/pascal
   train_list: ./lists/pascal/voc_sbd_merge_noduplicate.txt
   val_list: ./lists/pascal/val.txt
   superpixel_type: felzenszwalb

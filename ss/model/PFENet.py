@@ -345,10 +345,7 @@ class PFENet(nn.Module):
             # (num_superpixels, C)
             # choose one cluster from the 10 with highest activations
             activation = torch.sum(prototypes, dim=1)  # (num_superpixels)
-            k = max(
-                len(activation),
-                5
-            )
+            k = min(len(activation), 5)
             top_5 = torch.topk(activation, k=k, dim=0)[1]
             chosen_index = [i for i in top_5 if i != 0 and i != 255]
             if len(chosen_index) == 0:

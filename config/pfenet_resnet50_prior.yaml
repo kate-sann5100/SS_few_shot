@@ -1,0 +1,19 @@
+MODEL:
+  model: pfenet
+  backbone: resnet50
+  prior: True
+DATA:
+  dataset: pascal
+  data_root: /home/kate/storage/few_shot_semantic_segmentation/data/VOC2012
+  train_list: ./lists/pascal/voc_sbd_merge_noduplicate.txt
+  val_list: ./lists/pascal/val.txt
+  superpixel_type: felzenszwalb
+TRAIN:
+  base_lr: 0.0025
+  momentum: 0.9
+  weight_decay: 0.0001
+  power: 0.9
+
+  epochs: 300
+  alpha: 0.5
+  aux_weight: 1.0

@@ -180,11 +180,16 @@ def resnet101(pretrained=True, **kwargs):
 
 
 def get_resnet_layer(backbone_name):
-    backbone_dict = dict(
-        resnet50=resnet50(),
-        resnet101=resnet101()
-    )
-    model = backbone_dict[backbone_name]
+    # backbone_dict = dict(
+    #     resnet50=resnet50(),
+    #     resnet101=resnet101()
+    # )
+    if backbone_name == "resnet50":
+        model = resnet50()
+    elif backbone_name == "resnet101":
+        model = resnet101()
+    else:
+        raise ValueError(f"unrecognised backbone {backbone_name}")
     layer0 = nn.Sequential(model.conv1, model.bn1, model.relu1,
                            model.conv2, model.bn2, model.relu2,
                            model.conv3, model.bn3, model.relu3, model.maxpool)

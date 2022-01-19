@@ -84,8 +84,8 @@ def validate(val_loader, model, args, logger):
             iou_logger.record(
                 predict=output, target=target, novel_cls=batch['novel_cls'], num_cls=batch['num_cls']
             )
-            if (i + 1) % (test_num / 10) == 0:
-                logger.info(f'Test: [{iter_num * 1}/{test_num}]')
+            if (iter_num + 1) % (test_num / 10) == 0:
+                logger.info(f'Test: [{iter_num}/{test_num}]')
 
     logger.info('<<<<<<<<<<<<<<<<< End Evaluation <<<<<<<<<<<<<<<<<')
     df, class_df = iou_logger.get_df()
